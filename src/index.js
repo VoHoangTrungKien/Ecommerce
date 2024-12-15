@@ -23,11 +23,4 @@ root.render(
   </QueryClientProvider>
 );
 
-// Thêm đoạn mã TaggoAI ở đây
-<script
-  async
-  data-taggo-botid="675f18b6cb02892baf382a70"
-  src="https://widget.taggo.chat/v2.js"
-></script>;
-
 reportWebVitals();
