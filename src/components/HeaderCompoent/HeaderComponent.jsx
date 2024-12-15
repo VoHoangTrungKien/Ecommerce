@@ -38,8 +38,18 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
 
   const handleLogout = async () => {
     setLoading(true);
-    await UserService.logoutUser();
+    await UserService.logoutUser(); // Gọi API đăng xuất
+
+    // Kiểm tra xem token có tồn tại trong localStorage không và xóa nó
+    localStorage.removeItem("access_token"); // Xóa token với khóa là "access_token"
+
+    // Xóa thông tin người dùng, nếu có
+    localStorage.removeItem("user");
+    localStorage.removeItem("refresh_token");
+
+    // Xóa trạng thái Redux
     dispatch(resetUser());
+
     setLoading(false);
   };
 
