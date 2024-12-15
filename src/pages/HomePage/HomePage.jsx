@@ -72,7 +72,7 @@ const HomePage = () => {
           id="container"
           style={{ height: "100%", width: "1270px", margin: "0 auto" }}
         >
-          <SliderComponent arrImages={[slider6, slider8, slider8]} />
+          <SliderComponent arrImages={[slider6, slider8, slider7]} />
           <WrapperProducts>
             {products?.data?.map((product) => {
               return (
