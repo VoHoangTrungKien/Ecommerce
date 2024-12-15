@@ -187,7 +187,13 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
           </Loading>
           {!isHiddenCart && (
             <div
-              onClick={() => navigate("/order")}
+              onClick={() => {
+                if (user?.access_token) {
+                  navigate("/order");
+                } else {
+                  navigate("/sign-in");
+                }
+              }}
               style={{ cursor: "pointer" }}
             >
               <Badge count={order?.orderItems?.length} size="small">
