@@ -57,13 +57,7 @@ const HomePage = () => {
 
   return (
     <Loading isLoading={isLoading || loading}>
-      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 16px" }}>
-        <WrapperTypeProduct>
-          {typeProducts?.map((item) => (
-            <TypeProduct name={item} key={item} />
-          ))}
-        </WrapperTypeProduct>
-      </div>
+      <div style={{ width: "1250px", margin: "0 auto" }}></div>
       <div
         className="body"
         style={{ width: "100%", backgroundColor: "#efefef" }}
