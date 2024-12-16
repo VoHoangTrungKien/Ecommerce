@@ -217,40 +217,37 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
                 <WrapperTextHeaderSmall>Giỏ hàng</WrapperTextHeaderSmall>
               </div>
             )}
-            <div style={{ position: "relative" }}>
-              {/* Icon hamburger */}
-              <MenuOutlined
-                style={{ fontSize: "30px", color: "#fff", cursor: "pointer" }}
-                onClick={() => setIsMenuOpen((prev) => !prev)} // Đảo ngược trạng thái
-              />
+            <MenuOutlined
+              style={{ fontSize: "30px", color: "#fff", cursor: "pointer" }}
+              onClick={() => setIsMenuOpen((prev) => !prev)} // Đảo ngược trạng thái
+            />
 
-              {/* Hamburger Menu */}
-              {isMenuOpen && (
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "40px",
-                    left: "0",
-                    width: "250px",
-                    background: "#fff",
-                    boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
-                    padding: "10px",
-                    zIndex: 10,
-                  }}
-                >
-                  <ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
-                    {typeProducts?.map((item) => (
-                      <li
-                        key={item}
-                        style={{ padding: "8px 0", cursor: "pointer" }}
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
+            {/* Hamburger Menu */}
+            {isMenuOpen && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: "40px",
+                  left: "0",
+                  width: "250px",
+                  background: "#fff",
+                  boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+                  padding: "10px",
+                  zIndex: 10,
+                }}
+              >
+                <ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
+                  {typeProducts?.map((item) => (
+                    <li
+                      key={item}
+                      style={{ padding: "8px 0", cursor: "pointer" }}
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </Col>
         </Row>
       </WrapperHeader>
