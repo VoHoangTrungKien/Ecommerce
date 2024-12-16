@@ -138,7 +138,11 @@ const SignInPage = () => {
           )}
           <Loading isLoading={isLoading}>
             <ButtonComponent
-              disabled={!email.length || !password.length}
+              disabled={
+                !email.length ||
+                !password.length ||
+                !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)
+              }
               onClick={handleSignIn}
               size={40}
               styleButton={{
