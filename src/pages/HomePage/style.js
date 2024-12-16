@@ -7,6 +7,15 @@ export const WrapperTypeProduct = styled.div`
   gap: 24px;
   justify-content: flex-start;
   height: 44px;
+  @media (max-width: 768px) {
+    gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  @media (max-width: 576px) {
+    gap: 8px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
 `;
 export const WrapperButtonMore = styled(ButtonComponent)`
   background: #fff;

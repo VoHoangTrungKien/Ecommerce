@@ -1,4 +1,4 @@
-import { Badge, Button, Col, Popover } from "antd";
+import { Badge, Button, Col, Popover, Row } from "antd";
 import React from "react";
 import {
   WrapperContentPopup,
@@ -112,49 +112,57 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
         justifyContent: "center",
       }}
     >
-      <WrapperHeader
-        style={{
-          justifyContent:
-            isHiddenSearch && isHiddenSearch ? "space-between" : "unset",
-        }}
-      >
-        <Col span={5}>
-          <WrapperTextHeader to="/">H&K SHOP</WrapperTextHeader>
-        </Col>
-        {!isHiddenSearch && (
-          <Col span={13}>
-            <ButttonInputSearch
-              size="large"
-              bordered={false}
-              textbutton="Tìm kiếm"
-              placeholder="Tìm kiếm..."
-              onChange={onSearch}
-              backgroundColorButton="#5a20c1"
-            />
-          </Col>
-        )}
-        <Col
-          span={6}
-          style={{ display: "flex", gap: "54px", alignItems: "center" }}
+      <WrapperHeader>
+        <Row
+          style={{ width: "100%" }}
+          gutter={[16, 16]}
+          align="middle"
+          justify="space-between"
         >
-          <Loading isLoading={loading}>
-            <WrapperHeaderAccout>
-              {userAvatar ? (
-                <img
-                  src={userAvatar}
-                  alt="avatar"
-                  style={{
-                    height: "30px",
-                    width: "30px",
-                    borderRadius: "50%",
-                    objectFit: "cover",
-                  }}
-                />
-              ) : (
-                <UserOutlined style={{ fontSize: "30px" }} />
-              )}
-              {user?.access_token ? (
-                <>
+          {/* Logo */}
+          <Col xs={24} sm={12} md={6} lg={5}>
+            <WrapperTextHeader to="/">H&K SHOP</WrapperTextHeader>
+          </Col>
+
+          {/* Tìm kiếm */}
+          {!isHiddenSearch && (
+            <Col xs={24} sm={12} md={13} lg={13}>
+              <ButttonInputSearch
+                size="large"
+                bordered={false}
+                textbutton="Tìm kiếm"
+                placeholder="Tìm kiếm..."
+                onChange={onSearch}
+                backgroundColorButton="#5a20c1"
+              />
+            </Col>
+          )}
+
+          {/* Tài khoản và giỏ hàng */}
+          <Col
+            xs={24}
+            sm={24}
+            md={5}
+            lg={6}
+            style={{ display: "flex", gap: "20px" }}
+          >
+            <Loading isLoading={loading}>
+              <WrapperHeaderAccout>
+                {userAvatar ? (
+                  <img
+                    src={userAvatar}
+                    alt="avatar"
+                    style={{
+                      height: "30px",
+                      width: "30px",
+                      borderRadius: "50%",
+                      objectFit: "cover",
+                    }}
+                  />
+                ) : (
+                  <UserOutlined style={{ fontSize: "30px" }} />
+                )}
+                {user?.access_token ? (
                   <Popover content={content} trigger="click" open={isOpenPopup}>
                     <div
                       style={{
@@ -168,43 +176,37 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
                       {userName?.length ? userName : user?.email}
                     </div>
                   </Popover>
-                </>
-              ) : (
-                <div
-                  onClick={handleNavigateLogin}
-                  style={{ cursor: "pointer" }}
-                >
-                  <WrapperTextHeaderSmall>
-                    Đăng nhập/Đăng ký
-                  </WrapperTextHeaderSmall>
-                  <div>
-                    <WrapperTextHeaderSmall>Tài khoản</WrapperTextHeaderSmall>
+                ) : (
+                  <div
+                    onClick={handleNavigateLogin}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <WrapperTextHeaderSmall>
+                      Đăng nhập/Đăng ký
+                    </WrapperTextHeaderSmall>
                     <CaretDownOutlined />
                   </div>
-                </div>
-              )}
-            </WrapperHeaderAccout>
-          </Loading>
-          {!isHiddenCart && (
-            <div
-              onClick={() => {
-                if (user?.access_token) {
-                  navigate("/order");
-                } else {
-                  navigate("/sign-in");
+                )}
+              </WrapperHeaderAccout>
+            </Loading>
+
+            {!isHiddenCart && (
+              <div
+                onClick={() =>
+                  navigate(user?.access_token ? "/order" : "/sign-in")
                 }
-              }}
-              style={{ cursor: "pointer" }}
-            >
-              <Badge count={order?.orderItems?.length} size="small">
-                <ShoppingCartOutlined
-                  style={{ fontSize: "30px", color: "#fff" }}
-                />
-              </Badge>
-              <WrapperTextHeaderSmall>Giỏ hàng</WrapperTextHeaderSmall>
-            </div>
-          )}
-        </Col>
+                style={{ cursor: "pointer" }}
+              >
+                <Badge count={order?.orderItems?.length} size="small">
+                  <ShoppingCartOutlined
+                    style={{ fontSize: "30px", color: "#fff" }}
+                  />
+                </Badge>
+                <WrapperTextHeaderSmall>Giỏ hàng</WrapperTextHeaderSmall>
+              </div>
+            )}
+          </Col>
+        </Row>
       </WrapperHeader>
     </div>
   );

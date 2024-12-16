@@ -57,11 +57,11 @@ const HomePage = () => {
 
   return (
     <Loading isLoading={isLoading || loading}>
-      <div style={{ width: "1250px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 16px" }}>
         <WrapperTypeProduct>
-          {typeProducts?.map((item) => {
-            return <TypeProduct name={item} key={item} />;
-          })}
+          {typeProducts?.map((item) => (
+            <TypeProduct name={item} key={item} />
+          ))}
         </WrapperTypeProduct>
       </div>
       <div
