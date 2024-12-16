@@ -1,21 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { EyeFilled, EyeInvisibleFilled } from "@ant-design/icons";
+import { Image } from "antd";
 import ButtonComponent from "../../components/ButtonComponent/ButtonComponent";
 import InputForm from "../../components/InputForm/InputForm";
+import Loading from "../../components/LoadingComponent/Loading";
+import * as message from "../../components/Message/Message";
+import * as UserService from "../../services/UserService";
+import { useMutationHooks } from "../../hooks/useMutationHook";
 import {
   WrapperContainerLeft,
   WrapperContainerRight,
   WrapperTextLight,
 } from "./style";
 import imageLogo from "../../assets/images/logo-login.png";
-import { Image } from "antd";
-import { useState } from "react";
-import { EyeFilled, EyeInvisibleFilled } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
-import * as UserService from "../../services/UserService";
-import { useMutationHooks } from "../../hooks/useMutationHook";
-import Loading from "../../components/LoadingComponent/Loading";
-import * as message from "../../components/Message/Message";
-import { useEffect } from "react";
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -26,30 +24,17 @@ const SignUpPage = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleOnchangeEmail = (value) => {
-    setEmail(value);
-  };
-
   const mutation = useMutationHooks((data) => UserService.signupUser(data));
-
   const { data, isLoading, isSuccess, isError } = mutation;
 
   useEffect(() => {
     if (isSuccess) {
-      message.success();
+      message.success("Đăng ký thành công!");
       handleNavigateSignIn();
     } else if (isError) {
-      message.error();
+      message.error(data?.message);
     }
   }, [isSuccess, isError]);
-
-  const handleOnchangePassword = (value) => {
-    setPassword(value);
-  };
-
-  const handleOnchangeConfirmPassword = (value) => {
-    setConfirmPassword(value);
-  };
 
   const handleNavigateSignIn = () => {
     navigate("/sign-in");
@@ -67,25 +52,29 @@ const SignUpPage = () => {
         justifyContent: "center",
         background: "rgba(0, 0, 0, 0.53)",
         height: "100vh",
+        padding: "20px",
       }}
     >
       <div
         style={{
-          width: "800px",
-          height: "445px",
+          width: "100%",
+          maxWidth: "800px",
           borderRadius: "6px",
           background: "#fff",
           display: "flex",
+          flexDirection: "row",
+          overflow: "hidden",
+          flexWrap: "wrap",
         }}
       >
         <WrapperContainerLeft>
           <h1>Xin chào</h1>
           <p>Đăng nhập vào tạo tài khoản</p>
           <InputForm
-            style={{ marginBottom: "10px" }}
+            style={{ marginBottom: "10px", width: "100%" }}
             placeholder="abc@gmail.com"
             value={email}
-            onChange={handleOnchangeEmail}
+            onChange={(value) => setEmail(value)}
           />
           <div style={{ position: "relative" }}>
             <span
@@ -101,10 +90,10 @@ const SignUpPage = () => {
             </span>
             <InputForm
               placeholder="password"
-              style={{ marginBottom: "10px" }}
+              style={{ marginBottom: "10px", width: "100%" }}
               type={isShowPassword ? "text" : "password"}
               value={password}
-              onChange={handleOnchangePassword}
+              onChange={(value) => setPassword(value)}
             />
           </div>
           <div style={{ position: "relative" }}>
@@ -120,14 +109,15 @@ const SignUpPage = () => {
               {isShowConfirmPassword ? <EyeFilled /> : <EyeInvisibleFilled />}
             </span>
             <InputForm
-              placeholder="comfirm password"
+              placeholder="confirm password"
+              style={{ width: "100%" }}
               type={isShowConfirmPassword ? "text" : "password"}
               value={confirmPassword}
-              onChange={handleOnchangeConfirmPassword}
+              onChange={(value) => setConfirmPassword(value)}
             />
           </div>
           {data?.status === "ERR" && (
-            <span style={{ color: "red" }}>{data?.message}</span>
+            <span style={{ color: "red" }}>{data.message}</span>
           )}
           <Loading isLoading={isLoading}>
             <ButtonComponent
@@ -150,12 +140,11 @@ const SignUpPage = () => {
                 fontSize: "15px",
                 fontWeight: "700",
               }}
-            ></ButtonComponent>
+            />
           </Loading>
           <p>
             Bạn đã có tài khoản?{" "}
             <WrapperTextLight onClick={handleNavigateSignIn}>
-              {" "}
               Đăng nhập
             </WrapperTextLight>
           </p>
@@ -164,9 +153,8 @@ const SignUpPage = () => {
           <Image
             src={imageLogo}
             preview={false}
-            alt="iamge-logo"
-            height="203px"
-            width="203px"
+            alt="image-logo"
+            style={{ height: "auto", width: "80%", maxWidth: "200px" }}
           />
           <h4>Mua sắm tại H&K Shop</h4>
         </WrapperContainerRight>
