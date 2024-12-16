@@ -37,6 +37,8 @@ export const WrapperStyleHeaderDilivery = styled.div`
 
 export const WrapperLeft = styled.div`
   width: 910px;
+  display: flex;
+  flex-direction: column;
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -93,7 +95,6 @@ export const WrapperRight = styled.div`
   align-items: center;
   @media (max-width: 768px) {
     width: 100%;
-    margin: 0;
   }
 `;
 

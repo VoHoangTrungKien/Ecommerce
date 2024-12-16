@@ -90,15 +90,19 @@ const SignInPage = () => {
         justifyContent: "center",
         background: "rgba(0, 0, 0, 0.53)",
         height: "100vh",
+        padding: "20px",
       }}
     >
       <div
         style={{
-          width: "800px",
-          height: "445px",
+          width: "100%",
+          maxWidth: "800px",
           borderRadius: "6px",
           background: "#fff",
           display: "flex",
+          flexDirection: "row",
+          overflow: "hidden",
+          flexWrap: "wrap",
         }}
       >
         <WrapperContainerLeft>
