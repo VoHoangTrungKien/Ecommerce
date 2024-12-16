@@ -195,7 +195,9 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
                     style={{ cursor: "pointer" }}
                   >
                     <WrapperTextHeaderSmall>
-                      Đăng nhập/Đăng ký
+                      Đăng nhập
+                      <br />
+                      Đăng ký
                     </WrapperTextHeaderSmall>
                     <CaretDownOutlined />
                   </div>
