@@ -5,6 +5,8 @@ import {
   WrapperButtonMore,
   WrapperProducts,
   WrapperTypeProduct,
+  WrapperBody,
+  WrapperContainer,
 } from "./style";
 import slider6 from "../../assets/images/slider6.webp";
 import slider7 from "../../assets/images/slider7.webp";
@@ -57,34 +59,25 @@ const HomePage = () => {
 
   return (
     <Loading isLoading={isLoading || loading}>
-      <div style={{ width: "1250px", margin: "0 auto" }}></div>
-      <div
-        className="body"
-        style={{ width: "100%", backgroundColor: "#efefef" }}
-      >
-        <div
-          id="container"
-          style={{ height: "100%", width: "1270px", margin: "0 auto" }}
-        >
+      <WrapperBody>
+        <WrapperContainer>
           <SliderComponent arrImages={[slider6, slider8, slider7]} />
           <WrapperProducts>
-            {products?.data?.map((product) => {
-              return (
-                <CardComponent
-                  key={product._id}
-                  countInStock={product.countInStock}
-                  description={product.description}
-                  image={product.image}
-                  name={product.name}
-                  price={product.price}
-                  rating={product.rating}
-                  type={product.type}
-                  selled={product.selled}
-                  discount={product.discount}
-                  id={product._id}
-                />
-              );
-            })}
+            {products?.data?.map((product) => (
+              <CardComponent
+                key={product._id}
+                countInStock={product.countInStock}
+                description={product.description}
+                image={product.image}
+                name={product.name}
+                price={product.price}
+                rating={product.rating}
+                type={product.type}
+                selled={product.selled}
+                discount={product.discount}
+                id={product._id}
+              />
+            ))}
           </WrapperProducts>
           <div
             style={{
@@ -123,8 +116,8 @@ const HomePage = () => {
               onClick={() => setLimit((prev) => prev + 6)}
             />
           </div>
-        </div>
-      </div>
+        </WrapperContainer>
+      </WrapperBody>
     </Loading>
   );
 };
