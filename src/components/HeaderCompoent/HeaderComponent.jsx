@@ -13,6 +13,7 @@ import {
   ShoppingCartOutlined,
   MenuOutlined,
 } from "@ant-design/icons";
+import TypeProduct from "../../components/TypeProduct/TypeProduct";
 import ButttonInputSearch from "../ButtonInputSearch/ButttonInputSearch";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -244,7 +245,7 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
                       key={item}
                       style={{ padding: "8px 0", cursor: "pointer" }}
                     >
-                      {item}
+                      <TypeProduct name={item} key={item} />
                     </li>
                   ))}
                 </ul>
