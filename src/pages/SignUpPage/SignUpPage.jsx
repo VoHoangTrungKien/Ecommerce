@@ -32,7 +32,7 @@ const SignUpPage = () => {
       message.success("Đăng ký thành công!");
       handleNavigateSignIn();
     } else if (isError) {
-      message.error(data?.message);
+      message.error(data?.message || "Đã xảy ra lỗi. Vui lòng thử lại.");
     }
   }, [isSuccess, isError]);
 
@@ -117,7 +117,7 @@ const SignUpPage = () => {
             />
           </div>
           {data?.status === "ERR" && (
-            <span style={{ color: "red" }}>{data.message}</span>
+            <span style={{ color: "red" }}>{data?.message}</span>
           )}
           <Loading isLoading={isLoading}>
             <ButtonComponent

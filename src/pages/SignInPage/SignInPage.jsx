@@ -16,6 +16,7 @@ import { useMutationHooks } from "../../hooks/useMutationHook";
 import Loading from "../../components/LoadingComponent/Loading";
 import jwt_decode from "jwt-decode";
 import { useDispatch, useSelector } from "react-redux";
+import * as message from "../../components/Message/Message";
 import { updateUser } from "../../redux/slides/userSlide";
 
 const SignInPage = () => {
@@ -29,7 +30,7 @@ const SignInPage = () => {
   const navigate = useNavigate();
 
   const mutation = useMutationHooks((data) => UserService.loginUser(data));
-  const { data, isLoading, isSuccess } = mutation;
+  const { data, isLoading, isSuccess, isError } = mutation;
 
   useEffect(() => {
     if (isSuccess) {
@@ -49,8 +50,10 @@ const SignInPage = () => {
           handleGetDetailsUser(decoded?.id, data?.access_token);
         }
       }
+    } else if (isError) {
+      message.error(data?.message || "Đăng nhập thất bại. Vui lòng thử lại.");
     }
-  }, [isSuccess]);
+  }, [isSuccess, isError]);
 
   const handleGetDetailsUser = async (id, token) => {
     const storage = localStorage.getItem("refresh_token");
