@@ -221,7 +221,12 @@ const OrderPage = () => {
     <div style={{ background: "#f5f5fa", with: "100%", height: "100vh" }}>
       <div style={{ height: "100%", width: "1270px", margin: "0 auto" }}>
         <h3 style={{ fontWeight: "bold" }}>Giỏ hàng</h3>
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           <WrapperLeft>
             <h4>Phí giao hàng</h4>
             <WrapperStyleHeaderDilivery>
@@ -508,33 +513,39 @@ const OrderPage = () => {
               label="Name"
               name="name"
               rules={[{ required: true, message: "Please input your name!" }]}
+              style={{ width: "100%" }}
             >
               <InputComponent
                 value={stateUserDetails["name"]}
                 onChange={handleOnchangeDetails}
                 name="name"
+                style={{ width: "100%" }}
               />
             </Form.Item>
             <Form.Item
               label="City"
               name="city"
               rules={[{ required: true, message: "Please input your city!" }]}
+              style={{ width: "100%" }}
             >
               <InputComponent
                 value={stateUserDetails["city"]}
                 onChange={handleOnchangeDetails}
                 name="city"
+                style={{ width: "100%" }}
               />
             </Form.Item>
             <Form.Item
               label="Phone"
               name="phone"
               rules={[{ required: true, message: "Please input your  phone!" }]}
+              style={{ width: "100%" }}
             >
               <InputComponent
                 value={stateUserDetails.phone}
                 onChange={handleOnchangeDetails}
                 name="phone"
+                style={{ width: "100%" }}
               />
             </Form.Item>
 
@@ -544,11 +555,13 @@ const OrderPage = () => {
               rules={[
                 { required: true, message: "Please input your  address!" },
               ]}
+              style={{ width: "100%" }}
             >
               <InputComponent
                 value={stateUserDetails.address}
                 onChange={handleOnchangeDetails}
                 name="address"
+                style={{ width: "100%" }}
               />
             </Form.Item>
           </Form>

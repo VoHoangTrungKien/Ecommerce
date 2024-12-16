@@ -24,7 +24,7 @@ const MyOrderPage = () => {
   const navigate = useNavigate();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
-  const [receivedOrderId, setReceivedOrderId] = useState(null); // Lưu ID đơn hàng đã nhận
+  const [receivedOrderId, setReceivedOrderId] = useState(null);
 
   const fetchMyOrder = async () => {
     const res = await OrderService.getOrderByUserId(state?.id, state?.token);
@@ -52,8 +52,7 @@ const MyOrderPage = () => {
 
   const mutation = useMutationHooks((data) => {
     const { id, token, orderItems, userId } = data;
-    const res = OrderService.cancelOrder(id, token, orderItems, userId);
-    return res;
+    return OrderService.cancelOrder(id, token, orderItems, userId);
   });
 
   const handleConfirmReceiveOrder = async (order) => {
@@ -109,17 +108,17 @@ const MyOrderPage = () => {
 
   useEffect(() => {
     if (isSuccessCancel && dataCancel?.status === "OK") {
-      message.success();
+      message.success("Hủy đơn hàng thành công!");
     } else if (isSuccessCancel && dataCancel?.status === "ERR") {
       message.error(dataCancel?.message);
     } else if (isErrorCancel) {
-      message.error();
+      message.error("Hủy đơn hàng thất bại!");
     }
   }, [isErrorCancel, isSuccessCancel]);
 
   const renderProduct = (data) => {
     return data?.map((order) => {
-      const isReceived = receivedOrderId === order._id || order.isDelivered; // Kiểm tra trạng thái đã nhận
+      const isReceived = receivedOrderId === order._id || order.isDelivered;
       return (
         <WrapperItemOrder key={order?._id}>
           <WrapperStatus>
@@ -153,6 +152,7 @@ const MyOrderPage = () => {
             <WrapperHeaderItem key={index}>
               <img
                 src={item?.image}
+                alt={item?.name}
                 style={{
                   width: "70px",
                   height: "70px",
@@ -163,7 +163,7 @@ const MyOrderPage = () => {
               />
               <div
                 style={{
-                  width: 260,
+                  width: "100%",
                   overflow: "hidden",
                   textOverflow: "ellipsis",
                   whiteSpace: "nowrap",
@@ -196,7 +196,7 @@ const MyOrderPage = () => {
                 {convertPrice(order?.totalPrice)}
               </span>
             </div>
-            <div style={{ display: "flex", gap: "10px" }}>
+            <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
               <ButtonComponent
                 onClick={() => handleConfirmReceiveOrder(order)}
                 size={40}
@@ -210,8 +210,8 @@ const MyOrderPage = () => {
                   color: "#9255FD",
                   fontSize: "14px",
                 }}
-                disabled={order.isDelivered || receivedOrderId === order._id} // Đã nhận đơn hàng sẽ vô hiệu hóa
-              ></ButtonComponent>
+                disabled={order.isDelivered || receivedOrderId === order._id}
+              />
               <ButtonComponent
                 onClick={() => showCancelModal(order)}
                 size={40}
@@ -225,8 +225,8 @@ const MyOrderPage = () => {
                   color: "#9255FD",
                   fontSize: "14px",
                 }}
-                disabled={order.isDelivered || receivedOrderId === order._id} // Đã nhận đơn hàng sẽ vô hiệu hóa
-              ></ButtonComponent>
+                disabled={order.isDelivered || receivedOrderId === order._id}
+              />
               <ButtonComponent
                 onClick={() => handleDetailsOrder(order?._id)}
                 size={40}
@@ -240,7 +240,7 @@ const MyOrderPage = () => {
                   color: "#9255FD",
                   fontSize: "14px",
                 }}
-              ></ButtonComponent>
+              />
             </div>
           </WrapperFooterItem>
         </WrapperItemOrder>
@@ -251,8 +251,10 @@ const MyOrderPage = () => {
   return (
     <Loading isLoading={isLoading || isLoadingCancel}>
       <WrapperContainer>
-        <div style={{ height: "100%", width: "1270px", margin: "0 auto" }}>
-          <h4>Đơn hàng của tôi</h4>
+        <div style={{ width: "100%", maxWidth: "1270px", margin: "0 auto" }}>
+          <h4 style={{ textAlign: "left", marginBottom: "20px" }}>
+            Đơn hàng của tôi
+          </h4>
           <WrapperListOrder>
             {Array.isArray(data) && renderProduct(data)}
           </WrapperListOrder>
