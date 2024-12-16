@@ -50,7 +50,14 @@ const DetailsOrderPage = () => {
   return (
     <Loading isLoading={isLoading}>
       <div style={{ width: "100%", height: "100vh", background: "#f5f5fa" }}>
-        <div style={{ width: "1270px", margin: "0 auto", height: "1270px" }}>
+        <div
+          style={{
+            maxWidth: "1270px",
+            margin: "0 auto",
+            width: "100%",
+            padding: "20px",
+          }}
+        >
           <h4>Chi tiết đơn hàng</h4>
           <WrapperHeaderUser>
             <WrapperInfoUser>
