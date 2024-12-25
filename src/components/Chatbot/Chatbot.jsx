@@ -35,7 +35,7 @@ const Chatbot = () => {
       );
       const text = await response.text(); // Lấy phản hồi thô dưới dạng văn bản
       console.log(text);
-      const data = text ? JSON.parse(text) : {};
+      const data = JSON.parse(text);
       if (!response.ok)
         throw new Error(data.error.message || "Có gì đó sai sai !!!");
       console.log(data);
