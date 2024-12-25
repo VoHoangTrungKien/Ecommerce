@@ -196,11 +196,8 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
                     style={{ cursor: "pointer" }}
                   >
                     <WrapperTextHeaderSmall>
-                      Đăng nhập
-                      <br />
-                      Đăng ký
+                      Đăng nhập/ Đăng ký
                     </WrapperTextHeaderSmall>
-                    <CaretDownOutlined />
                   </div>
                 )}
               </WrapperHeaderAccout>
@@ -221,7 +218,7 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
               </div>
             )}
             <MenuOutlined
-              style={{ fontSize: "30px", color: "#fff", cursor: "pointer" }}
+              style={{ fontSize: "20px", color: "#fff", cursor: "pointer" }}
               onClick={() => setIsMenuOpen((prev) => !prev)} // Đảo ngược trạng thái
             />
 

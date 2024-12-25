@@ -116,6 +116,7 @@ const HomePage = () => {
               onClick={() => setLimit((prev) => prev + 6)}
             />
           </div>
+          <br />
         </WrapperContainer>
       </WrapperBody>
     </Loading>

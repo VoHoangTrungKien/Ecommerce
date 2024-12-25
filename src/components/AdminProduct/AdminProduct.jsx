@@ -332,10 +332,6 @@ const AdminProduct = () => {
       ...getColumnSearchProps("type"),
     },
     {
-      title: "inventory",
-      dataIndex: "countInStock",
-    },
-    {
       title: "Action",
       dataIndex: "action",
       render: renderAction,
