@@ -122,7 +122,7 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
         heiht: "100%",
         width: "100%",
         display: "flex",
-        background: "#9255FD",
+        background: "#38d7e7",
         justifyContent: "center",
       }}
     >
@@ -147,7 +147,7 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
                 textbutton="Tìm kiếm"
                 placeholder="Tìm kiếm..."
                 onChange={onSearch}
-                backgroundColorButton="#5a20c1"
+                backgroundColorButton="#1f4172"
               />
             </Col>
           )}

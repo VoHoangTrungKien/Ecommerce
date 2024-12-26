@@ -394,7 +394,7 @@ const OrderPage = () => {
                   </span>
                   <span
                     onClick={handleChangeAddress}
-                    style={{ color: "#9255FD", cursor: "pointer" }}
+                    style={{ color: "#38d7e7", cursor: "pointer" }}
                   >
                     Thay đổi
                   </span>

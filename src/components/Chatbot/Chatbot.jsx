@@ -40,7 +40,7 @@ const Chatbot = () => {
         throw new Error(data.error.message || "Có gì đó sai sai !!!");
       console.log(data);
       const apiResponseText = data.candidates[0].content.parts[0].text
-        .replace(/\*\*(.*?)\*\*/g, "1")
+        .replace(/\*\*(.*?)\*\*/g, "$1")
         .trim();
       updateHistory(apiResponseText);
     } catch (error) {
