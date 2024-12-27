@@ -24,6 +24,7 @@ const ProfilePage = () => {
   const user = useSelector((state) => state.user);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [avatar, setAvatar] = useState("");
@@ -148,7 +149,7 @@ const ProfilePage = () => {
             <WrapperLabel htmlFor="phone">Phone</WrapperLabel>
             <InputForm
               style={{ width: "300px" }}
-              id="email"
+              id="phone"
               value={phone}
               onChange={handleOnchangePhone}
             />

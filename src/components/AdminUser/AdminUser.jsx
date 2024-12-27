@@ -432,7 +432,17 @@ const AdminUser = () => {
                 name="phone"
               />
             </Form.Item>
-
+            <Form.Item
+              label="Admin"
+              name="isAdmin"
+              rules={[{ required: true }]}
+            >
+              <InputComponent
+                value={stateUserDetails.phone}
+                onChange={handleOnchangeDetails}
+                name="isAdmin"
+              />
+            </Form.Item>
             <Form.Item
               label="Adress"
               name="address"
@@ -447,11 +457,7 @@ const AdminUser = () => {
               />
             </Form.Item>
 
-            <Form.Item
-              label="Avatar"
-              name="avatar"
-              rules={[{ required: true, message: "Please input your image!" }]}
-            >
+            <Form.Item label="Avatar" name="avatar">
               <WrapperUploadFile
                 onChange={handleOnchangeAvatarDetails}
                 maxCount={1}
