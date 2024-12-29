@@ -124,7 +124,7 @@ const OrderPage = () => {
   const priceDiscountMemo = useMemo(() => {
     const result = order?.orderItemsSlected?.reduce((total, cur) => {
       const totalDiscount = cur.discount ? cur.discount : 0;
-      return total + (priceMemo * (totalDiscount * cur.amount)) / 100;
+      return total + (cur.price * (totalDiscount * cur.amount)) / 100;
     }, 0);
     if (Number(result)) {
       return result;
