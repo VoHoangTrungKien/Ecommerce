@@ -120,7 +120,7 @@ const ProfilePage = () => {
               }}
             ></ButtonComponent>
           </WrapperInput>
-          <WrapperInput>
+          {/* <WrapperInput>
             <WrapperLabel htmlFor="email">Email</WrapperLabel>
             <InputForm
               style={{ width: "300px" }}
@@ -144,7 +144,7 @@ const ProfilePage = () => {
                 fontWeight: "700",
               }}
             ></ButtonComponent>
-          </WrapperInput>
+          </WrapperInput> */}
           <WrapperInput>
             <WrapperLabel htmlFor="phone">Phone</WrapperLabel>
             <InputForm
