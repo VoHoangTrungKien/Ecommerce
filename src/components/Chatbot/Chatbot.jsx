@@ -13,8 +13,22 @@ const Chatbot = () => {
       text: companyInfo,
     },
   ]);
-  const [showChatbot, setShowChatbot] = useState([false]);
+  const [showChatbot, setShowChatbot] = useState(false); // Mặc định là false
   const chatBodyRef = useRef();
+
+  // Khi showChatbot thay đổi, lưu vào localStorage
+  useEffect(() => {
+    localStorage.setItem("showChatbot", JSON.stringify(showChatbot));
+  }, [showChatbot]);
+
+  // Khi component mount, đọc trạng thái từ localStorage
+  useEffect(() => {
+    const savedState = localStorage.getItem("showChatbot");
+    if (savedState !== null) {
+      setShowChatbot(JSON.parse(savedState));
+    }
+  }, []);
+
   const generateBotResponse = async (history) => {
     const updateHistory = (text, isError = false) => {
       setChatHistory((prev) => [
@@ -47,12 +61,14 @@ const Chatbot = () => {
       updateHistory(error.message, true);
     }
   };
+
   useEffect(() => {
     chatBodyRef.current.scrollTo({
       top: chatBodyRef.current.scrollHeight,
       behavior: "smooth",
     });
   }, [chatHistory]);
+
   return (
     <div className={`container ${showChatbot ? "show-chatbot" : ""}`}>
       <button
