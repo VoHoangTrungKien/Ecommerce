@@ -24,7 +24,7 @@ const HomePage = () => {
   const searchProduct = useSelector((state) => state?.product?.search);
   const searchDebounce = useDebounce(searchProduct, 500);
   const [loading, setLoading] = useState(false);
-  const [limit, setLimit] = useState(24);
+  const [limit, setLimit] = useState(12);
   const [typeProducts, setTypeProducts] = useState([]);
 
   const fetchProductAll = async (context) => {
@@ -113,7 +113,7 @@ const HomePage = () => {
                 fontWeight: 500,
                 color: products?.total === products?.data?.length && "#fff",
               }}
-              onClick={() => setLimit((prev) => prev + 12)}
+              onClick={() => setLimit((prev) => prev + 6)}
             />
           </div>
           <br />
