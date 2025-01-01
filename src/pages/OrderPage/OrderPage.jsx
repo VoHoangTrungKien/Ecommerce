@@ -390,7 +390,7 @@ const OrderPage = () => {
                 <div>
                   <span>Địa chỉ: </span>
                   <span style={{ fontWeight: "bold" }}>
-                    {`${user?.address} ${user?.city}`}{" "}
+                    {`${user?.address}/${user?.city}`}{" "}
                   </span>
                   <span
                     onClick={handleChangeAddress}

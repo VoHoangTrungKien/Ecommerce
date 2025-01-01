@@ -34,7 +34,7 @@ const HomePage = () => {
 
     return res;
   };
-  const arr = ["One Piece", "Dragon Ball", "Pokemon", "AOT", "Tokyo Ghoul"];
+  // const arr = ["One Piece", "Dragon Ball", "Pokemon", "AOT", "Tokyo Ghoul"];
 
   const fetchAllTypeProduct = async () => {
     const res = await ProductService.getAllTypeProduct();
