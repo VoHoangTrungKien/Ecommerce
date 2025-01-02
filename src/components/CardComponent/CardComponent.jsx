@@ -46,7 +46,7 @@ const CardComponent = (props) => {
             style={{ fontSize: "12px", color: "rgb(253, 216, 54)" }}
           />
         </span>
-        <WrapperStyleTextSell> | Da ban {selled || 0}+</WrapperStyleTextSell>
+        <WrapperStyleTextSell> | Đã bán: {selled || 0}</WrapperStyleTextSell>
       </WrapperReportText>
       <WrapperPriceText>
         <span style={{ marginRight: "8px" }}>{convertPrice(price)}</span>
