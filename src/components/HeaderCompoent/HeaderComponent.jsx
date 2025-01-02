@@ -112,6 +112,7 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
   };
 
   const onSearch = (e) => {
+    navigate("/");
     setSearch(e.target.value);
     dispatch(searchProduct(e.target.value));
   };
