@@ -107,6 +107,7 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
       });
     } else {
       handleLogout();
+      navigate("/");
     }
     setIsOpenPopup(false);
   };
