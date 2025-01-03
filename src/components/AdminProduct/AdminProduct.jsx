@@ -305,30 +305,31 @@ const AdminProduct = () => {
         return record.price <= 50;
       },
     },
-    {
-      title: "Rating",
-      dataIndex: "rating",
-      sorter: (a, b) => a.rating - b.rating,
-      filters: [
-        {
-          text: ">= 3",
-          value: ">=",
-        },
-        {
-          text: "<= 3",
-          value: "<=",
-        },
-      ],
-      onFilter: (value, record) => {
-        if (value === ">=") {
-          return Number(record.rating) >= 3;
-        }
-        return Number(record.rating) <= 3;
-      },
-    },
+    // {
+    //   title: "Rating",
+    //   dataIndex: "rating",
+    //   sorter: (a, b) => a.rating - b.rating,
+    //   filters: [
+    //     {
+    //       text: ">= 3",
+    //       value: ">=",
+    //     },
+    //     {
+    //       text: "<= 3",
+    //       value: "<=",
+    //     },
+    //   ],
+    //   onFilter: (value, record) => {
+    //     if (value === ">=") {
+    //       return Number(record.rating) >= 3;
+    //     }
+    //     return Number(record.rating) <= 3;
+    //   },
+    // },
     {
       title: "Type",
       dataIndex: "type",
+      onFilter: (value, record) => record.type.includes(value),
       ...getColumnSearchProps("type"),
     },
     {
