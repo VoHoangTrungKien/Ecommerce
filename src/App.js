@@ -89,7 +89,6 @@ function App() {
                       <div style={{ position: "relative" }}>
                         <div style={{ position: "relative", zIndex: 1 }}>
                           <Page />
-                          <Footer />
                         </div>
                         <div
                           style={{
