@@ -246,7 +246,6 @@ const AdminUser = () => {
     {
       title: "Address",
       dataIndex: "address",
-      ...getColumnSearchProps("address"),
     },
     {
       title: "Admin",
