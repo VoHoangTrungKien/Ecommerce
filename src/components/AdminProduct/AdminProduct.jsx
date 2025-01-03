@@ -329,7 +329,7 @@ const AdminProduct = () => {
     {
       title: "Type",
       dataIndex: "type",
-      onFilter: (value, record) => record.type.includes(value),
+      sorter: (a, b) => a.type - b.type,
       ...getColumnSearchProps("type"),
     },
     {

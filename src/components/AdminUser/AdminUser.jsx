@@ -246,7 +246,6 @@ const AdminUser = () => {
     {
       title: "Address",
       dataIndex: "address",
-      sorter: (a, b) => a.address.length - b.address.length,
       ...getColumnSearchProps("address"),
     },
     {
